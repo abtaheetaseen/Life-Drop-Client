@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcSettings } from 'react-icons/fc'
+import { FcServices, FcSettings } from 'react-icons/fc'
 import { BsFillHouseAddFill } from 'react-icons/bs'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
@@ -11,8 +11,9 @@ import toast from 'react-hot-toast'
 import { IoFastFood } from 'react-icons/io5'
 import { RiReservedFill } from 'react-icons/ri'
 import { MdRestaurantMenu } from 'react-icons/md'
-import { FaBook, FaList, FaUsers } from 'react-icons/fa'
+import { FaBook, FaHome, FaList, FaUsers } from 'react-icons/fa'
 import { FaDeleteLeft } from 'react-icons/fa6'
+import { CgProfile } from 'react-icons/cg'
 
 const Sidebar = () => {
   const { logOut } = useContext(AuthContext);
@@ -41,11 +42,11 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-red-600 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
             <Link to='/'>
-              <h1 className='text-xl text-red-600 font-bold'>LIFE-DROP</h1>
+              <h1 className='text-xl text-white font-bold'>LIFE-DROP</h1>
             </Link>
           </div>
         </div>
@@ -54,20 +55,20 @@ const Sidebar = () => {
           onClick={handleToggle}
           className='p-4 cursor-pointer'
         >
+            {
+                isActive ? 
+                <AiOutlineBars className='h-5 w-5 text-white' />
+                :
+                <FaDeleteLeft className='h-5 w-5 text-white' />
+            }
           
-          {
-            isActive ? 
-            <AiOutlineBars className='h-5 w-5' /> 
-            : 
-            <FaDeleteLeft className='h-5 w-5' />
-          }
         </span>
       </div>
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform min-h-screen  ${
-          isActive && '-translate-y-full'
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-red-600 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform min-h-screen  ${
+          isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         {
@@ -77,7 +78,7 @@ const Sidebar = () => {
           <div>
             <div className='w-full hidden md:flex px-4 py-2 justify-start items-center mx-auto'>
               <Link to='/'>
-              <h1 className='text-xl text-red-600 font-bold'>LIFE-DROP</h1>
+              <h1 className='text-xl text-white font-bold'>LIFE-DROP</h1>
               </Link>
             </div>
           </div>
@@ -93,69 +94,28 @@ const Sidebar = () => {
                 to='/dashboard'
                 end
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                  `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${
+                    isActive ? 'bg-black rounded-xl' : 'bg-transparent'
                   }`
                 }
               >
-                <BsGraphUp className='w-5 h-5' />
+                <BsGraphUp className='w-5 h-5 text-white' />
 
-                <span className='mx-4 font-medium'>Statistics</span>
-              </NavLink>
-
-              {/* Add food */}
-              <NavLink
-                to='addFood'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <BsFillHouseAddFill className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Add Food</span>
-              </NavLink>
-              {/* manage items*/}
-              <NavLink
-                to='manageItems'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaList className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>Manage Items</span>
-              </NavLink>
-
-              {/* Reservations */}
-              <NavLink
-                to='manageReservations'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <FaBook className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>All Reservations</span>
+                <span className='mx-4 font-medium text-white'>Statistics</span>
               </NavLink>
 
               {/* all users */}
               <NavLink
                 to='allUsers'
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${
+                        isActive ? 'bg-black rounded-xl' : 'bg-transparent'
+                      }`
                 }
               >
-                <FaUsers className='w-5 h-5' />
+                <FaUsers className='w-5 h-5 text-white' />
 
-                <span className='mx-4 font-medium'>All Users</span>
+                <span className='mx-4 font-medium text-white'>All Users</span>
               </NavLink>
             </nav>
           </div>
@@ -175,49 +135,21 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* Conditional toggle button here.. */}
 
-            {/*  Menu Items */}
+            
             <nav>
               {/* Statistics */}
               <NavLink
                 to='/dashboard'
                 end
                 className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${
+                        isActive ? 'bg-black rounded-xl' : 'bg-transparent'
+                      }`
                 }
               >
-                <BsGraphUp className='w-5 h-5' />
+                <BsGraphUp className='w-5 h-5 text-white' />
 
-                <span className='mx-4 font-medium'>Statistics</span>
-              </NavLink>
-
-              {/* My orders */}
-              <NavLink
-                to='myOrderedFoodItems'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <IoFastFood className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Orders</span>
-              </NavLink>
-
-              {/* Reservations */}
-              <NavLink
-                to='myReservation'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <RiReservedFill className='w-5 h-5' />
-
-                <span className='mx-4 font-medium'>My Reservation</span>
+                <span className='mx-4 font-medium text-white'>Statistics</span>
               </NavLink>
             </nav>
           </div>
@@ -228,40 +160,40 @@ const Sidebar = () => {
         <div>
           <hr />
 
-          {/* menu */}
+          {/* home */}
           <NavLink
-            to='/allFoods'
+            to='/'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-              }`
+                `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${
+                    isActive ? 'bg-black rounded-xl' : 'bg-transparent'
+                  }`
             }
           >
-            <MdRestaurantMenu className='w-5 h-5' />
+            <FaHome className='w-5 h-5 text-white' />
 
-            <span className='mx-4 font-medium'>Menu</span>
+            <span className='mx-4 font-medium text-white'>Home</span>
           </NavLink>
 
           {/* Profile Menu */}
           <NavLink
             to='/dashboard/profile'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-              }`
+                `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${
+                    isActive ? 'bg-black rounded-xl' : 'bg-transparent'
+                  }`
             }
           >
-            <FcSettings className='w-5 h-5' />
+            <CgProfile className="w-5 h-5 text-white" />
 
-            <span className='mx-4 font-medium'>Profile</span>
+            <span className='mx-4 font-medium text-white'>Profile</span>
           </NavLink>
           <button
             onClick={handleLogOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
-            <GrLogout className='w-5 h-5' />
+            <GrLogout className='w-5 h-5 text-white' />
 
-            <span className='mx-4 font-medium'>Logout</span>
+            <span className='mx-4 font-medium text-white'>Logout</span>
           </button>
         </div>
       </div>
