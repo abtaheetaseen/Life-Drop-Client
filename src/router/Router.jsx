@@ -10,6 +10,7 @@ import SearchDonor from "../pages/SearchDonor";
 import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/dashboard/admin/AllUsers";
+import Profile from "../pages/dashboard/forEveryone/Profile";
 
 export const Router = createBrowserRouter([
     {
@@ -58,7 +59,13 @@ export const Router = createBrowserRouter([
                 </PrivateRoute>
             },
 
-            // normal users
+            // profile page for all
+            {
+                path: "profile",
+                element: <PrivateRoute>
+                <Profile />
+                </PrivateRoute>
+            },
             
         ]
     }
