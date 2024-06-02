@@ -1,19 +1,15 @@
 import { useContext, useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
-import { FcServices, FcSettings } from 'react-icons/fc'
-import { BsFillHouseAddFill } from 'react-icons/bs'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider'
 import toast from 'react-hot-toast'
-import { IoFastFood } from 'react-icons/io5'
-import { RiReservedFill } from 'react-icons/ri'
-import { MdRestaurantMenu } from 'react-icons/md'
-import { FaBook, FaHome, FaList, FaUsers } from 'react-icons/fa'
+import { FaHome, FaUsers } from 'react-icons/fa'
 import { FaDeleteLeft } from 'react-icons/fa6'
 import { CgProfile } from 'react-icons/cg'
+import useAdmin from '../../hooks/useAdmin'
 
 const Sidebar = () => {
   const { logOut } = useContext(AuthContext);
@@ -21,7 +17,7 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
 
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -68,8 +64,8 @@ const Sidebar = () => {
       {/* Sidebar */}
       <div
         className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-red-600 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform min-h-screen  ${
-          isActive && '-translate-x-full'
-        }  md:translate-x-0  transition duration-200 ease-in-out`}
+          isActive && '-translate-y-full'
+        }  md:translate-x-0  transition duration-500 ease-in-out`}
       >
         {
             isAdmin ? 
@@ -87,7 +83,6 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             {/* Conditional toggle button here.. */}
 
-            {/*  Menu Items */}
             <nav>
               {/* Statistics */}
               <NavLink
