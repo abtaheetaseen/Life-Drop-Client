@@ -90,7 +90,7 @@ const Navbar = () => {
                   className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 flex-col gap-3 text-black'
                 >
 
-                  <NavLink to="/dashboard">
+                  <NavLink to="/dashboard/profile">
                     <li>
                       <div>Dashboard</div>
                     </li>

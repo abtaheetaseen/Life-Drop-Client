@@ -11,6 +11,16 @@ import DashboardLayout from "../layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import AllUsers from "../pages/dashboard/admin/AllUsers";
 import Profile from "../pages/dashboard/forEveryone/Profile";
+import AdminRoute from "./AdminRoute";
+import DonorDashboard from "../pages/dashboard/user/DonorDashboard";
+import MyDonationRequest from "../pages/dashboard/user/MyDonationRequest";
+import CreateDonationRequest from "../pages/dashboard/user/CreateDonationRequest";
+import AdminDashboard from "../pages/dashboard/admin/AdminDashboard";
+import AllBloodDonationRequests from "../pages/dashboard/admin/AllBloodDonationRequests";
+import ContentManagement from "../pages/dashboard/admin/ContentManagement";
+import VolunteerDashboard from "../pages/dashboard/volunteer/VolunteerDashboard";
+import VolunteerDonationRequests from "../pages/dashboard/volunteer/VolunteerDonationRequests";
+import VolunteerContentManagement from "../pages/dashboard/volunteer/VolunteerContentManagement";
 
 export const Router = createBrowserRouter([
     {
@@ -54,9 +64,27 @@ export const Router = createBrowserRouter([
             // admin
             {
                 path: "allUsers",
-                element: <PrivateRoute>
+                element: <AdminRoute>
                 <AllUsers />
-                </PrivateRoute>
+                </AdminRoute>
+            },
+            {
+                path: "admin-dashboard",
+                element: <AdminRoute>
+                <AdminDashboard />
+                </AdminRoute>
+            },
+            {
+                path: "all-blood-donation-request",
+                element: <AdminRoute>
+                <AllBloodDonationRequests />
+                </AdminRoute>
+            },
+            {
+                path: "content-management",
+                element: <AdminRoute>
+                <ContentManagement />
+                </AdminRoute>
             },
 
             // profile page for all
@@ -66,7 +94,46 @@ export const Router = createBrowserRouter([
                 <Profile />
                 </PrivateRoute>
             },
-            
+
+            // volunteer pages
+            {
+                path: "volunteer-dashboard",
+                element: <PrivateRoute>
+                <VolunteerDashboard />
+                </PrivateRoute>
+            },
+            {
+                path: "volunteer-all-donation-requests",
+                element: <PrivateRoute>
+                <VolunteerDonationRequests />
+                </PrivateRoute>
+            },
+            {
+                path: "volunteer-content-management",
+                element: <PrivateRoute>
+                <VolunteerContentManagement />
+                </PrivateRoute>
+            },
+
+            // user/donor pages
+            {
+                path: "donor-dashboard",
+                element: <PrivateRoute>
+                <DonorDashboard />
+                </PrivateRoute>
+            },
+            {
+                path: "my-donation-requests",
+                element: <PrivateRoute>
+                <MyDonationRequest />
+                </PrivateRoute>
+            },
+            {
+                path: "create-donation-requests",
+                element: <PrivateRoute>
+                <CreateDonationRequest />
+                </PrivateRoute>
+            },
         ]
     }
 ])
