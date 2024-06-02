@@ -69,6 +69,58 @@ const AllUsers = () => {
         });
     }
 
+    const handleBlock = (user) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, do it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/user/admin/block-user/${user._id}`)
+                .then(res => {
+                    if(res.data.modifiedCount){
+                        Swal.fire({
+                            title: "Done",
+                            text: `You blocked ${user?.name.toUpperCase()}.`,
+                            icon: "success"
+                        });
+                        refetch();
+                    }
+                })
+            }
+        });
+    }
+
+    const handleUnblock = (user) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, do it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.patch(`/user/admin/unblock-user/${user._id}`)
+                .then(res => {
+                    if(res.data.modifiedCount){
+                        Swal.fire({
+                            title: "Done",
+                            text: `You unblock ${user?.name.toUpperCase()}.`,
+                            icon: "success"
+                        });
+                        refetch();
+                    }
+                })
+            }
+        });
+    }
+
     return (
         <>
 
@@ -110,11 +162,11 @@ const AllUsers = () => {
                                         <td>{user.status}</td>
 
                                         <th>
-                                            <button className="btn btn-xs bg-green-500 text-white hover:bg-green-400 border-none">Unblock</button>
+                                            <button disabled={user?.status === "active" ? true : false} onClick={() => handleUnblock(user)} className="btn btn-xs bg-green-500 text-white hover:bg-green-400 border-none">Unblock</button>
                                         </th>
 
                                         <th>
-                                            <button className="btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none">Block</button>
+                                            <button disabled={user?.status === "active" ? false : true} onClick={() => handleBlock(user)} className="btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none">Block</button>
                                         </th>
 
                                         <th>
