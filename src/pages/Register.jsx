@@ -108,7 +108,9 @@ const Register = () => {
                 division,
                 district,
                 upazila,
-                bloodGroup
+                bloodGroup,
+                status: "active",
+                role: "user"
             }
 
             const res = await axiosSecure.post("/users", user)

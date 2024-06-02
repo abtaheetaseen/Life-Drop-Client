@@ -63,8 +63,8 @@ const Profile = () => {
         }
     })
 
-    const {data} = useQuery({
-        queryKey: ["profileUser"],
+    const {data, refetch} = useQuery({
+        queryKey: ["profileUser", user?.email],
         queryFn: async() => {
             const res = await axiosSecure.get(`/users?email=${user?.email}`)
             console.log(res.data)
@@ -105,8 +105,8 @@ const Profile = () => {
             const res = await axiosPublic.put(`/users/${data?._id}`, updatedUser)
             console.log(res.data)
             if(res.data.modifiedCount){
-                toast.success("Your info is updated")
-                window.location.reload();
+                refetch();
+                toast.success("Your info is updated");
             }
 
         } catch (error) {
@@ -118,12 +118,12 @@ const Profile = () => {
 
   return (
     <>
-      <SectionTitle heading={`Welcome ${data?.name.toUpperCase()}`} subHeading={"You can edit your info if you want."} />
+      <SectionTitle heading={`Your Profile : ${data?.name.toUpperCase()}`} subHeading={"You can edit your info if you want."} />
 
       <div>
       <form onSubmit={handleUpdate}>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center my-10">
             <button onClick={handleEditClick} className="px-5 btn btn-sm bg-red-600 hover:bg-red-500 cursor-pointer leading-5 text-white duration-300 transform rounded-md">
             <input type="submit" value={!isEditing ? "Edit" : "Save"} />
             </button>
