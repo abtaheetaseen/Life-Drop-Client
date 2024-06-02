@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const CreateDonationRequest = () => {
 
@@ -16,6 +17,7 @@ const CreateDonationRequest = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const handleDivision = (e) => {
         setSelectDivision(e.target.value);
@@ -57,6 +59,15 @@ const CreateDonationRequest = () => {
         }
     })
 
+    const {data} = useQuery({
+        queryKey: ["profileUser", user?.email],
+        queryFn: async() => {
+            const res = await axiosSecure.get(`/users?email=${user?.email}`)
+            console.log(res.data)
+            return res.data;
+        }
+    })
+
     const handleRequest = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -86,7 +97,8 @@ const CreateDonationRequest = () => {
             donationDate,
             donationTime,
             requestMessage,
-            status: "pending"
+            status: "pending",
+            date: new Date()
         }
         console.log(donationRequest);
 
@@ -205,7 +217,7 @@ const CreateDonationRequest = () => {
                         </div>
                         
                         <div className='flex items-center justify-center'>
-                        <input className='mt-[30px] btn btn-sm px-7 bg-red-600 border-none hover:bg-red-500 text-white' type="submit" value="Request" />
+                        <input disabled={data?.status === "active" ? false : true} className='mt-[30px] btn btn-sm px-7 bg-red-600 border-none hover:bg-red-500 text-white' type="submit" value="Request" />
                         </div>
 
                     </form>

@@ -6,13 +6,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../provider/AuthProvider'
 import toast from 'react-hot-toast'
-import { FaBlog, FaHome, FaRegQuestionCircle, FaUsers } from 'react-icons/fa'
+import { FaBlog, FaHome, FaUsers } from 'react-icons/fa'
 import { FaCodePullRequest, FaDeleteLeft } from 'react-icons/fa6'
 import { CgProfile } from 'react-icons/cg'
-import useAdmin from '../../hooks/useAdmin'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
-import logo from "../../assets/images/logo.png"
 
 const Sidebar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -23,15 +21,13 @@ const Sidebar = () => {
     queryKey: ["profileUser", user?.email],
     queryFn: async() => {
         const res = await axiosSecure.get(`/users?email=${user?.email}`)
-        console.log(res.data)
         return res.data;
     }
 })
-console.log(data)
 
   const navigate = useNavigate();
 
-  const [isAdmin] = useAdmin();
+//   const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logOut()
