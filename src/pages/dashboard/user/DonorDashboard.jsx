@@ -5,6 +5,7 @@ import { AuthContext } from '../../../provider/AuthProvider';
 import SectionTitle from '../../../components/SectionTitle';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const DonorDashboard = () => {
 
@@ -101,9 +102,11 @@ const DonorDashboard = () => {
               }
             </td>
             <td>
+              <Link to={`/update-donation-requests/${item._id}`}>
               <button className='btn btn-xs btn-neutral'>
                 Edit
               </button>
+              </Link>
             </td>
             <td>
               <button onClick={() => handleDelete(item)} className='btn btn-xs btn-neutral'>
@@ -111,9 +114,11 @@ const DonorDashboard = () => {
               </button>
             </td>
             <td>
+              <Link to={`/view-donation-request-details/${item._id}`}>
               <button className='btn btn-xs btn-neutral'>
                 View
               </button>
+              </Link>
             </td>
           </tr>)
         }
@@ -124,9 +129,11 @@ const DonorDashboard = () => {
 </div>
 
 <div className='flex items-center justify-center mt-[50px]'>
+  <Link to="/dashboard/my-donation-requests">
           <button className='btn btn-sm px-3 bg-red-600 text-white hover:bg-red-500 border-none'>
             View My All Requests
           </button>
+          </Link>
         </div>
     </>
   )

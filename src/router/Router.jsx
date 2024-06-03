@@ -21,6 +21,8 @@ import ContentManagement from "../pages/dashboard/admin/ContentManagement";
 import VolunteerDashboard from "../pages/dashboard/volunteer/VolunteerDashboard";
 import VolunteerDonationRequests from "../pages/dashboard/volunteer/VolunteerDonationRequests";
 import VolunteerContentManagement from "../pages/dashboard/volunteer/VolunteerContentManagement";
+import UpdateDonationRequest from "../components/dashboard/UpdateDonationRequest";
+import ViewDonationRequestDetails from "../components/dashboard/ViewDonationRequestDetails";
 
 export const Router = createBrowserRouter([
     {
@@ -51,6 +53,20 @@ export const Router = createBrowserRouter([
             {
                 path: "/search-donor",
                 element: <SearchDonor />
+            },
+            {
+                path: "/update-donation-requests/:id",
+                element: <PrivateRoute>
+                <UpdateDonationRequest />
+                </PrivateRoute>,
+                loader: () => fetch(`http://localhost:3000/donationRequest`)
+            },
+            {
+                path: "/view-donation-request-details/:id",
+                element: <PrivateRoute>
+                <ViewDonationRequestDetails />
+                </PrivateRoute>,
+                loader: () => fetch(`http://localhost:3000/donationRequest`)
             },
         ]
     }, 
@@ -126,6 +142,12 @@ export const Router = createBrowserRouter([
                 path: "my-donation-requests",
                 element: <PrivateRoute>
                 <MyDonationRequest />
+                </PrivateRoute>
+            },
+            {
+                path: "update-donation-requests",
+                element: <PrivateRoute>
+                <UpdateDonationRequest />
                 </PrivateRoute>
             },
             {

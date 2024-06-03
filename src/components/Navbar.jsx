@@ -22,11 +22,11 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar fixed z-10 bg-black bg-opacity-40 text-white shadow-sm px-4 mx-auto flex-col lg:flex-row'>
+    <div className='navbar z-10 bg-black bg-opacity-70 text-white shadow-sm px-4 mx-auto flex-col lg:flex-row'>
       <div className='flex-1'>
         <div className='flex gap-2 items-center'>
           <img className='w-auto h-7' src='' alt='' />
-          <Link to="/" className='text-xl font-bold text-red-600'>LIFE-DROP</Link>
+          <Link to="/" className='text-xl font-bold text-white'>LIFE-DROP</Link>
         </div>
       </div>
       <div className='flex-none'>

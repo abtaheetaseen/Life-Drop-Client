@@ -5,3 +5,7 @@
     background-size: cover;
     background-position: center;
 }
+
+.react-tabs__tab{
+    text-align: center;
+}
