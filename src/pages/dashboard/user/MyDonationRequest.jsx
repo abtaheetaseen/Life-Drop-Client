@@ -98,17 +98,17 @@ const MyDonationRequest = () => {
       <td>{item.donationDate}</td>
       <td>{item.donationTime}</td>
       <td>
-        {
-          item.status === "pending" ? "pending" : 
-          <div className="flex gap-3">
-            <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
-              Done
-            </button>
-            <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
-              Cancel
-            </button>
-          </div>
-        }
+      {
+                item.status === "pending" ? "pending" : item.status === "inProgress" ?
+                <div className="flex gap-3">
+                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                    Done
+                  </button>
+                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                    Cancel
+                  </button>
+                </div> : item.status === "done" ? "done" : "canceled"
+              }
       </td>
       <td>
         {
@@ -175,17 +175,17 @@ const MyDonationRequest = () => {
       <td>{item.donationDate}</td>
       <td>{item.donationTime}</td>
       <td>
-        {
-          item.status === "pending" ? "pending" : 
-          <div className="flex gap-3">
-            <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
-              Done
-            </button>
-            <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
-              Cancel
-            </button>
-          </div>
-        }
+      {
+                item.status === "pending" ? "pending" : item.status === "inProgress" ?
+                <div className="flex gap-3">
+                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                    Done
+                  </button>
+                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                    Cancel
+                  </button>
+                </div> : item.status === "done" ? "done" : "canceled"
+              }
       </td>
       <td>
         {
@@ -252,17 +252,17 @@ const MyDonationRequest = () => {
       <td>{item.donationDate}</td>
       <td>{item.donationTime}</td>
       <td>
-        {
-          item.status === "pending" ? "pending" : 
-          <div className="flex gap-3">
-            <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
-              Done
-            </button>
-            <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
-              Cancel
-            </button>
-          </div>
-        }
+      {
+                item.status === "pending" ? "pending" : item.status === "inProgress" ?
+                <div className="flex gap-3">
+                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                    Done
+                  </button>
+                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                    Cancel
+                  </button>
+                </div> : item.status === "done" ? "done" : "canceled"
+              }
       </td>
       <td>
         {
@@ -329,17 +329,17 @@ const MyDonationRequest = () => {
       <td>{item.donationDate}</td>
       <td>{item.donationTime}</td>
       <td>
-        {
-          item.status === "pending" ? "pending" : 
-          <div className="flex gap-3">
-            <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
-              Done
-            </button>
-            <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
-              Cancel
-            </button>
-          </div>
-        }
+      {
+                item.status === "pending" ? "pending" : item.status === "inProgress" ?
+                <div className="flex gap-3">
+                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                    Done
+                  </button>
+                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                    Cancel
+                  </button>
+                </div> : item.status === "done" ? "done" : "canceled"
+              }
       </td>
       <td>
         {

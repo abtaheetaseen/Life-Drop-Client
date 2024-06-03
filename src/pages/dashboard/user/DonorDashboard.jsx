@@ -49,6 +49,58 @@ const DonorDashboard = () => {
   });
   } 
 
+  const handleDone = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, do it!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+          axiosSecure.patch(`/donationRequest/doneStatus/${item._id}`)
+          .then(res => {
+              if(res.data.modifiedCount){
+                  Swal.fire({
+                      title: "Done",
+                      text: `You request has completed`,
+                      icon: "success"
+                  });
+                  refetch();
+              }
+          })
+      }
+  });
+  }
+
+  const handleCanceled = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, do it!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+          axiosSecure.patch(`/donationRequest/canceledStatus/${item._id}`)
+          .then(res => {
+              if(res.data.modifiedCount){
+                  Swal.fire({
+                      title: "Done",
+                      text: `You cancel your donation request`,
+                      icon: "success"
+                  });
+                  refetch();
+              }
+          })
+      }
+  });
+  }
+
   return (
     <>
       <SectionTitle heading={`Welcome ${user?.displayName}`} subHeading={"Your recent donation request"} />
@@ -78,27 +130,27 @@ const DonorDashboard = () => {
             <td>{item.donationTime}</td>
             <td>
               {
-                item.status === "pending" ? "pending" : 
+                item.status === "pending" ? "pending" : item.status === "inProgress" ?
                 <div className="flex gap-3">
-                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                  <button onClick={() => handleDone(item)} className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
                     Done
                   </button>
-                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                  <button onClick={() => handleCanceled(item)} className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
                     Cancel
                   </button>
-                </div>
+                </div> : item.status === "done" ? "done" : "canceled"
               }
             </td>
             <td>
               {
                 item.status === "inProgress" ? 
-                <div>Donor Name</div> : "X"
+                <div>{item.donorName}</div> : "X"
               }
             </td>
             <td>
               {
                 item.status === "inProgress" ? 
-                <div>Donor Email</div> : "X"
+                <div>{item.donorEmail}</div> : "X"
               }
             </td>
             <td>
