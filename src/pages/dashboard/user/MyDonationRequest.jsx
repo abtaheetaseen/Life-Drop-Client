@@ -15,7 +15,7 @@ const MyDonationRequest = () => {
             return res.data;
         }
     })
-    console.log(donationRequests.slice(0, 3))
+    console.log(donationRequests?.slice(0, 3))
 
   return (
     <div>

@@ -1,10 +1,134 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import useAxiosPublic from '../../../hooks/useAxiosPublic'
+import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../../../provider/AuthProvider';
+import SectionTitle from '../../../components/SectionTitle';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const DonorDashboard = () => {
+
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+  const {user} = useContext(AuthContext);
+
+  const {data: donationRequests, refetch} = useQuery({
+      queryKey: ["donationRequest", user?.email],
+      queryFn: async() => {
+          const res = await axiosPublic.get(`/donationRequest?email=${user?.email}`)
+          return res.data;
+      }
+  })
+  console.log(donationRequests?.slice(0, 3))
+
+  const handleDelete = (item) => {
+    console.log(item._id)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+          axiosSecure.delete(`/donationRequest/${item._id}`)
+          .then(res => {
+              if(res.data.deletedCount > 0){
+                  Swal.fire({
+                      title: "Deleted!",
+                      text: "Your request has been deleted.",
+                      icon: "success"
+                  });
+                  refetch();
+              }
+          })
+      }
+  });
+  } 
+
   return (
-    <div>
-      donor dashboard
-    </div>
+    <>
+      <SectionTitle heading={`Welcome ${user?.displayName}`} subHeading={"Your recent donation request"} />
+
+      <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        <th>Recipient <br /> Name</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Donar <br /> Name</th>
+        <th>Donar <br /> Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        {
+          donationRequests?.slice(0,3).map(item => <tr key={item._id}>
+            <td>{item.recipientName}</td>
+            <td>{item.upazila}, {item.district}</td>
+            <td>{item.donationDate}</td>
+            <td>{item.donationTime}</td>
+            <td>
+              {
+                item.status === "pending" ? "pending" : 
+                <div className="flex gap-3">
+                  <button className='btn btn-xs bg-green-600 text-white hover:bg-green-500 border-none'>
+                    Done
+                  </button>
+                  <button  className='btn btn-xs bg-red-600 text-white hover:bg-red-500 border-none'>
+                    Cancel
+                  </button>
+                </div>
+              }
+            </td>
+            <td>
+              {
+                item.status === "inProgress" ? 
+                <div>Donor Name</div> : "X"
+              }
+            </td>
+            <td>
+              {
+                item.status === "inProgress" ? 
+                <div>Donor Email</div> : "X"
+              }
+            </td>
+            <td>
+              <button className='btn btn-xs btn-neutral'>
+                Edit
+              </button>
+            </td>
+            <td>
+              <button onClick={() => handleDelete(item)} className='btn btn-xs btn-neutral'>
+                Delete
+              </button>
+            </td>
+            <td>
+              <button className='btn btn-xs btn-neutral'>
+                View
+              </button>
+            </td>
+          </tr>)
+        }
+
+    </tbody>
+  </table>
+
+</div>
+
+<div className='flex items-center justify-center mt-[50px]'>
+          <button className='btn btn-sm px-3 bg-red-600 text-white hover:bg-red-500 border-none'>
+            View My All Requests
+          </button>
+        </div>
+    </>
   )
 }
 
