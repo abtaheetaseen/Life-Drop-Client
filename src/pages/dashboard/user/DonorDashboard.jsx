@@ -143,13 +143,13 @@ const DonorDashboard = () => {
             </td>
             <td>
               {
-                item.status === "inProgress" ? 
+                item.status === "inProgress" || item.status === "done" || item.status === "canceled" ? 
                 <div>{item.donorName}</div> : "X"
               }
             </td>
             <td>
               {
-                item.status === "inProgress" ? 
+                item.status === "inProgress" || item.status === "done" || item.status === "canceled" ? 
                 <div>{item.donorEmail}</div> : "X"
               }
             </td>

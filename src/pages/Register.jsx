@@ -136,7 +136,7 @@ const Register = () => {
                 <title>LIFE-DROP | REGISTER</title>
             </Helmet>
 
-            <section className="bg-white min-h-screen">
+            <section className="bg-white min-h-screen my-[100px]">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                     <form onSubmit={handleRegister} className="w-full max-w-md">
                         <h1 className='font-bold text-red-600'>* LIFE-DROP</h1>

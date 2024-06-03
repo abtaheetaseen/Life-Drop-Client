@@ -111,7 +111,7 @@ const UpdateDonationRequest = () => {
             console.log(res.data);
             if(res.data.modifiedCount){
                 toast.success("Your request is updated");
-                navigate("/dashboard/my-donation-requests");
+                navigate("/");
             }
         })
 
@@ -129,13 +129,13 @@ const UpdateDonationRequest = () => {
                         <div className="mb-5 mt-4">
                         <label className="text-red-600">Requester Name</label>
 
-                            <input defaultValue={user?.displayName} readOnly={true} type="text" name='requesterName' className="block w-full py-2.5 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-red-400 dark:focus:border-red-300 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
+                            <input defaultValue={request.requesterName} readOnly={true} type="text" name='requesterName' className="block w-full py-2.5 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-red-400 dark:focus:border-red-300 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                         </div>
 
                         <div className="mb-5 mt-4">
                         <label className="text-red-600" htmlFor="divisions">Requester Email</label>
 
-                            <input defaultValue={user?.email} readOnly={true} type="email" name='requesterEmail' className="block w-full py-2.5 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-red-400 dark:focus:border-red-300 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
+                            <input defaultValue={request.requesterEmail} readOnly={true} type="email" name='requesterEmail' className="block w-full py-2.5 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-red-400 dark:focus:border-red-300 focus:ring-red-300 focus:outline-none focus:ring focus:ring-opacity-40" required />
                         </div>
 
                         <div className="mb-5 mt-4">
