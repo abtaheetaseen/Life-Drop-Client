@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom';
 import useAdmin from '../hooks/useAdmin';
 
 const AdminRoute = ({children}) => {
-    const {user, loading} = useContext(AuthContext);
+    const {user, loading, logOut} = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin();
 
     if(loading || isAdminLoading){
@@ -15,6 +15,14 @@ const AdminRoute = ({children}) => {
 
     if(user && isAdmin){
         return children;
+    } else {
+        logOut()
+        .then(() => {
+          console.log("user logged out")
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
 
   return <Navigate to="/login"></Navigate>
