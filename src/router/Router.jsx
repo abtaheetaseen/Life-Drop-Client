@@ -25,6 +25,7 @@ import UpdateDonationRequest from "../components/dashboard/UpdateDonationRequest
 import ViewDonationRequestDetails from "../components/dashboard/ViewDonationRequestDetails";
 import VolunteerRoute from "./VolunteerRoute";
 import AddBlog from "../components/dashboard/AddBlog";
+import ReadBlog from "../components/ReadBlog";
 
 export const Router = createBrowserRouter([
     {
@@ -70,6 +71,13 @@ export const Router = createBrowserRouter([
                 <ViewDonationRequestDetails />
                 </PrivateRoute>,
                 loader: () => fetch(`http://localhost:3000/donationRequest`)
+            },
+            {
+                path: "/blog/:id",
+                element: <PrivateRoute>
+                    <ReadBlog />
+                </PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:3000/publishedBlogs/${params.id}`)
             },
         ]
     }, 
