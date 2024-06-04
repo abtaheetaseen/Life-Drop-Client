@@ -116,7 +116,7 @@ const MyDonationRequest = () => {
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
 
 
-<TabList className='w-10/12 mx-auto mb-[70px] grid grid-cols-5'>
+<TabList className='w-10/12 mx-auto mb-[70px] grid grid-cols-4'>
     <Tab>Pending Request</Tab>
     <Tab>InProgress Request</Tab>
     <Tab>Done Request</Tab>

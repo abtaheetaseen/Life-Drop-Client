@@ -223,7 +223,7 @@ const UpdateDonationRequest = () => {
                         </div>
                         
                         <div className='flex items-center justify-center'>
-                        <input disabled={data?.status === "active" ? false : true} className='mt-[30px] btn btn-sm px-7 bg-red-600 border-none hover:bg-red-500 text-white' type="submit" value="Update Request" />
+                        <input disabled={data?.status === "blocked" || data?.role === "volunteer" ? true : false} className='mt-[30px] btn btn-sm px-7 bg-red-600 border-none hover:bg-red-500 text-white' type="submit" value="Update Request" />
                         </div>
 
                     </form>

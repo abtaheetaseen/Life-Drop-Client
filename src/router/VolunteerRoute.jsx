@@ -1,0 +1,31 @@
+import React, { useContext } from 'react'
+import { AuthContext } from '../provider/AuthProvider';
+import { Navigate } from 'react-router-dom';
+import useVolunteer from '../hooks/useVolunteer';
+
+const VolunteerRoute = ({children}) => {
+    const {user, loading, logOut} = useContext(AuthContext);
+    const [isVolunteer, isVolunteerLoading] = useVolunteer();
+
+    if(loading || isVolunteerLoading){
+        return <div className='flex items-center justify-center'>
+            <div className="loading loading-infinity loading-lg min-h-screen "></div>
+        </div> 
+    }
+
+    if(user && isVolunteer){
+        return children;
+    } else {
+        logOut()
+        .then(() => {
+          console.log("user logged out")
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+
+  return <Navigate to="/login"></Navigate>
+}
+
+export default VolunteerRoute
