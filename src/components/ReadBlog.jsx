@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
+import HTMLToPlainText from './dashboard/HTMLToPlainText';
 
 const ReadBlog = () => {
 
@@ -7,6 +8,7 @@ const ReadBlog = () => {
     console.log(blog);
     const blogContent = blog.blogContent;
     console.log(blogContent)
+
 
   return (
     <div className='flex items-center justify-center my-[100px]'>
@@ -16,7 +18,10 @@ const ReadBlog = () => {
     <div className="p-6">
         <div>
             <h1 className='font-extrabold tracking-wider text-3xl mb-10 mt-5'>{blog.title}</h1>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{blogContent}</p>
+            {/* <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{blogContent}</p> */}
+            <div>
+              <HTMLToPlainText blogContent={blogContent}/>
+            </div>
         </div>
     </div>
 </div>
