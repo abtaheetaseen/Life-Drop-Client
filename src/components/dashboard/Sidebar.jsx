@@ -351,7 +351,7 @@ const Sidebar = () => {
 
             <nav>
               <NavLink
-                to='/dashboard/volunteer-content-management'
+                to='/dashboard/content-management'
                 end
                 className={({ isActive }) =>
                     `flex items-center px-4 py-2 my-5  transition-colors duration-300  ${

@@ -24,6 +24,7 @@ import VolunteerContentManagement from "../pages/dashboard/volunteer/VolunteerCo
 import UpdateDonationRequest from "../components/dashboard/UpdateDonationRequest";
 import ViewDonationRequestDetails from "../components/dashboard/ViewDonationRequestDetails";
 import VolunteerRoute from "./VolunteerRoute";
+import AddBlog from "../components/dashboard/AddBlog";
 
 export const Router = createBrowserRouter([
     {
@@ -104,6 +105,12 @@ export const Router = createBrowserRouter([
                 <ContentManagement />
                 </AdminRoute>
             },
+            {
+                path: "add-blog",
+                element: <AdminRoute>
+                <AddBlog />
+                </AdminRoute>
+            },
 
             // profile page for all
             {
@@ -126,12 +133,12 @@ export const Router = createBrowserRouter([
                 <VolunteerDonationRequests />
                 </VolunteerRoute>
             },
-            {
-                path: "volunteer-content-management",
-                element: <VolunteerRoute>
-                <VolunteerContentManagement />
-                </VolunteerRoute>
-            },
+            // {
+            //     path: "content-management",
+            //     element: <VolunteerRoute>
+            //     <ContentManagement />
+            //     </VolunteerRoute>
+            // },
 
             // user/donor pages
             {
