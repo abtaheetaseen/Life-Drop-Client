@@ -5,7 +5,7 @@ const BlogCard = ({blog}) => {
   return (
     <div>
 <div className="card w-96 bg-base-100 shadow-xl">
-  <figure><img src={blog.thumbnail} alt="Shoes" /></figure>
+  <figure><img className='h-[200px] w-full lg:h-[250px] md:h-[250px]' src={blog.thumbnail} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">{blog.title}</h2>
     <div className="card-actions justify-start">

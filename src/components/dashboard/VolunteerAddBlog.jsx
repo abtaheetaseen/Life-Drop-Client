@@ -7,8 +7,7 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 
-const AddBlog = () => {
-
+const VolunteerAddBlog = () => {
     const axiosSecure = useAxiosSecure();
     const {user} = useContext(AuthContext);
   
@@ -45,7 +44,7 @@ const AddBlog = () => {
             }
             console.log(blog)
 
-            const res = await axiosSecure.post("/blogs", blog)
+            const res = await axiosSecure.post("/blog", blog)
             console.log(res.data)
             if(res.data.insertedId){
                 toast.success("Blog has created as draft");
@@ -97,4 +96,4 @@ const AddBlog = () => {
   )
 }
 
-export default AddBlog
+export default VolunteerAddBlog

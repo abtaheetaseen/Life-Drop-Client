@@ -99,7 +99,7 @@ const ContentManagement = () => {
 
   return (
     <>
-      <SectionTitle heading={"Publish Content"} />
+      <SectionTitle heading={"Publish New Content"} />
 
       <div className='flex items-center justify-end mb-[50px]'>
         <Link to="/dashboard/add-blog">
