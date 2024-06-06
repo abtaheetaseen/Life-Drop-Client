@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../provider/AuthProvider';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
@@ -12,15 +12,18 @@ const VolunteerContentManagement = () => {
 
   const axiosSecure = useAxiosSecure();
   const {user} = useContext(AuthContext);
+  const [allBlogs, setAllBlogs] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  const {data: allBlogs = []} = useQuery({
+  const { data: blog = [], refetch } = useQuery({
     queryKey: ["all-blogs"],
-    queryFn: async() => {
+    queryFn: async () => {
       const res = await axiosSecure.get("/blog");
-      return res.data;
+      setAllBlogs(res?.data);
+      setFilteredData(res?.data);
+      return res?.data;
     }
   })
-  console.log(allBlogs)
 
   const {data: currentUser = []} = useQuery({
     queryKey: ["profileUser", user?.email],
@@ -32,16 +35,48 @@ const VolunteerContentManagement = () => {
 })
 console.log(currentUser)
 
+const handleAllDraftBlogs = () => {
+
+  const result = allBlogs?.filter(item => item.status === "draft");
+  setFilteredData(result);
+
+}
+
+const handleAllPublishedBlogs = () => {
+
+  const result = allBlogs?.filter(item => item.status === "published");
+  setFilteredData(result);
+}
+
+const handleShowAll = () => {
+setFilteredData(allBlogs);
+}
+
   return (
     <>
       <SectionTitle heading={"Publish Content"} />
 
-      <div className='flex items-center justify-end mb-[50px]'>
-        <Link to="/dashboard/volunteer-add-blog">
-        <button className='bg-red-600 border-none hover:bg-red-500 text-white btn btn-sm'>
-          Add Blog
-        </button>
-        </Link>
+      <div className='flex items-center justify-between mb-[50px]'>
+
+        <div>
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-sm btn-neutral m-1">Filtered By</div>
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><button onClick={handleShowAll} className='btn btn-sm mb-3'>All Content</button></li>
+              <li><button onClick={handleAllDraftBlogs} className='btn btn-sm mb-3'>Draft</button></li>
+              <li><button onClick={handleAllPublishedBlogs} className='btn btn-sm'>Published</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <Link to="/dashboard/volunteer-add-blog">
+            <button className='bg-red-600 border-none hover:bg-red-500 text-white btn btn-sm'>
+              Add Blog
+            </button>
+          </Link>
+        </div>
+        
       </div>
 
       <div className="overflow-x-auto">
@@ -57,7 +92,7 @@ console.log(currentUser)
     <tbody>
 
         {
-          allBlogs?.map(blog => <tr key={blog._id}>
+          filteredData?.map(blog => <tr key={blog._id}>
             <td>{blog.title}</td>
             <td>{blog.status}</td>
             <td>
