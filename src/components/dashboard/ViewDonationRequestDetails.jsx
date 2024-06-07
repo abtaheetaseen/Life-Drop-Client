@@ -99,7 +99,7 @@ const ViewDonationRequestDetails = () => {
               </div>
               
               <button className="btn btn-sm bg-red-600 text-white hover:bg-red-500 border-none">
-                <input className='cursor-pointer' type="submit" value="Donate" />
+                <input className='cursor-pointer' type="submit" disabled value="Donate" />
               </button>
               
               

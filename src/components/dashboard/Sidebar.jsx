@@ -11,6 +11,10 @@ import { FaCodePullRequest, FaDeleteLeft } from 'react-icons/fa6'
 import { CgProfile } from 'react-icons/cg'
 import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
+import { IoCreate } from 'react-icons/io5'
+import { BiSolidDonateHeart } from 'react-icons/bi'
+import { MdArticle, MdDashboardCustomize } from 'react-icons/md'
+import { IoMdLogOut } from 'react-icons/io'
 
 const Sidebar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -185,7 +189,7 @@ const Sidebar = () => {
                   }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <MdDashboardCustomize className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Dashboard</span>
               </NavLink>
@@ -212,7 +216,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <FaCodePullRequest className='w-6 h-6 text-white' />
+                <BiSolidDonateHeart className='w-6 h-6 text-white' />
 
                 <span className='mx-4 font-medium text-white'>All Blood Donation Requests</span>
               </NavLink>
@@ -225,7 +229,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <FaBlog className='w-5 h-5 text-white' />
+                <MdArticle className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Content Management</span>
               </NavLink>
@@ -260,7 +264,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <MdDashboardCustomize className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Dashboard</span>
               </NavLink>
@@ -276,7 +280,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <BiSolidDonateHeart className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>My Donation Request</span>
               </NavLink>
@@ -292,7 +296,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <IoCreate className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Create Donation Request</span>
               </NavLink>
@@ -327,7 +331,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <MdDashboardCustomize className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Dashboard</span>
               </NavLink>
@@ -343,7 +347,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <BiSolidDonateHeart className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>All Donation Request</span>
               </NavLink>
@@ -359,7 +363,7 @@ const Sidebar = () => {
                       }`
                 }
               >
-                <BsGraphUp className='w-5 h-5 text-white' />
+                <MdArticle className='w-5 h-5 text-white' />
 
                 <span className='mx-4 font-medium text-white'>Content Management</span>
               </NavLink>
@@ -405,7 +409,7 @@ const Sidebar = () => {
             onClick={handleLogOut}
             className='flex w-full items-center px-4 py-2 mt-5 hover:bg-black hover:rounded-xl transition-colors duration-300 transform'
           >
-            <GrLogout className='w-5 h-5 text-white' />
+            <IoMdLogOut className='w-5 h-5 text-white' />
 
             <span className='mx-4 font-medium text-white'>Logout</span>
           </button>
