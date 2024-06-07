@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SectionTitle from '../../../components/SectionTitle'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -8,12 +8,36 @@ const AllUsers = () => {
 
     const axiosSecure = useAxiosSecure();
 
-    const { data: allUsers = [], refetch } = useQuery({
-        queryKey: ["allUsers"],
+    const [allUsers, setAllUsers] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+
+    const [allUsersTotal, setAllUsersTotal] = useState("");
+    const allUsersCount = allUsersTotal.totalUsersCount;
+    const itemsPerPage = 10;
+    const numberOfPages = Math.ceil(allUsersCount / itemsPerPage);
+    const [currentPage, setCurrentPage] = useState(0);
+
+    const pages = []
+    for (let i = 0; i < numberOfPages; i++) {
+      pages.push(i)
+    }
+
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ["allUsers", currentPage, itemsPerPage],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/user`)
-            console.log(res.data)
-            return res.data;
+            const res = await axiosSecure.get(`/user?page=${currentPage}&size=${itemsPerPage}`);
+            setAllUsers(res?.data);
+            setFilteredData(res?.data);
+            return res?.data;
+        }
+    })
+
+    const {data: totalUsers = []} = useQuery({
+        queryKey: ["totalUsersCount"],
+        queryFn: async() => {
+            const res = await axiosSecure.get("/totalUsersCount");
+            setAllUsersTotal(res?.data);
+            return res?.data;
         }
     })
 
@@ -121,10 +145,52 @@ const AllUsers = () => {
         });
     }
 
+    const handlePrev = () => {
+        if (currentPage > 0) {
+          setCurrentPage(currentPage - 1);
+        }
+      }
+    
+      const handleNext = () => {
+        if (currentPage < pages.length - 1) {
+          setCurrentPage(currentPage + 1);
+        }
+      }
+
+      const handleActiveUsers = () => {
+
+        const result = allUsers?.filter(item => item.status === "active");
+        setFilteredData(result);
+      }
+      
+      const handleBlockedUsers = () => {
+      
+        const result = allUsers?.filter(item => item.status === "blocked");
+        setFilteredData(result);
+      }
+      
+      const handleShowAll = () => {
+        setFilteredData(allUsers);
+      }
+
     return (
         <>
 
             <SectionTitle heading={"All Users"} subHeading={"Manage your users"} />
+
+
+            <div className='flex items-center justify-center mb-[70px]'>
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-sm btn-neutral m-1">Filtered By</div>
+            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <li><button onClick={handleShowAll} className='btn btn-sm mb-3'>All Users</button></li>
+
+              <li><button onClick={handleActiveUsers} className='btn btn-sm mb-3'>Active Users</button></li>
+
+              <li><button onClick={handleBlockedUsers} className='btn btn-sm mb-3'>Blocked Users</button></li>
+            </ul>
+          </div>
+        </div>
 
             
                 <div>
@@ -142,7 +208,7 @@ const AllUsers = () => {
                             </thead>
                             <tbody>
                                 {
-                                    allUsers.map(user => <tr key={user?._id}>
+                                    filteredData?.map(user => <tr key={user?._id}>
                                         <td>
                                             <div className="flex items-center gap-3">
                                                 <div className="avatar">
@@ -187,6 +253,23 @@ const AllUsers = () => {
                         </table>
                     </div>
                 </div>
+
+                <div className='flex items-center justify-center gap-3 mt-[80px] mb-[30px]'>
+
+<button className='btn btn-sm bg-white border-red-600 hover:bg-red-500 hover:text-white hover:border-none' onClick={handlePrev}>
+  Prev
+</button>
+
+{
+  pages.map((page, index) => <button onClick={() => setCurrentPage(page)} className={currentPage === page ? "btn btn-sm border-none bg-red-600 text-white hover:bg-red-500" : "btn btn-sm bg-white border-red-600 hover:bg-red-500 hover:text-white hover:border-none"} key={index}>
+    {page}
+  </button>)
+}
+
+<button className='btn btn-sm bg-white border-red-600 hover:bg-red-500 hover:text-white hover:border-none' onClick={handleNext}>
+  Next
+</button>
+</div>
 
         </>
     )

@@ -237,7 +237,7 @@ const Sidebar = () => {
 
         {/* user/donor routes */}
         {
-            data?.role === "user" &&
+            data?.role === "donor" &&
             <>
             <div>
           <div>
