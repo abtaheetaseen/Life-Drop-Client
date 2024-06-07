@@ -96,6 +96,12 @@ const Navbar = () => {
                     </li>
                   </NavLink>
 
+                  <NavLink to="/payment">
+                    <li>
+                      <div>Funding</div>
+                    </li>
+                  </NavLink>
+
                   <li className=''>
               <button onClick={handleLogOut}>
                 Logout

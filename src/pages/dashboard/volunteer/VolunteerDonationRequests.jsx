@@ -175,18 +175,6 @@ const VolunteerDonationRequests = () => {
                       }
                     </td>
                     <td>
-                      <Link to={`/update-donation-requests/${item._id}`}>
-                        <button className='btn btn-xs btn-neutral'>
-                          Edit
-                        </button>
-                      </Link>
-                    </td>
-                    <td>
-                      <button onClick={() => handleDelete(item)} className='btn btn-xs btn-neutral'>
-                        Delete
-                      </button>
-                    </td>
-                    <td>
                       <Link to={`/view-donation-request-details/${item._id}`}>
                         <button className='btn btn-xs btn-neutral'>
                           View

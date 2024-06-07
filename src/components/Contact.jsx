@@ -8,7 +8,7 @@ const Contact = () => {
 
   return (
     <>
-      <SectionTitle heading={"CONTACT US"} subHeading={"Donate blood, donate smile!"} />
+      <SectionTitle heading={"CONTACT US"} subHeading={"At : +8801931183851"} />
 
       <section className="w-10/12 px-6 mb-[60px] mx-auto">
 

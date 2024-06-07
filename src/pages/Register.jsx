@@ -110,7 +110,7 @@ const Register = () => {
                 upazila,
                 bloodGroup,
                 status: "active",
-                role: "user"
+                role: "donor"
             }
 
             const res = await axiosSecure.post("/users", user)

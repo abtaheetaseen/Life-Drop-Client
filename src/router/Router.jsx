@@ -27,6 +27,7 @@ import VolunteerRoute from "./VolunteerRoute";
 import AddBlog from "../components/dashboard/AddBlog";
 import ReadBlog from "../components/ReadBlog";
 import VolunteerAddBlog from "../components/dashboard/VolunteerAddBlog";
+import Payment from "../pages/Payment";
 
 export const Router = createBrowserRouter([
     {
@@ -79,6 +80,12 @@ export const Router = createBrowserRouter([
                     <ReadBlog />
                 </PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:3000/publishedBlogs/${params.id}`)
+            },
+            {
+                path: "/payment",
+                element: <PrivateRoute>
+                    <Payment />
+                </PrivateRoute>
             },
         ]
     }, 

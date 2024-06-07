@@ -170,13 +170,13 @@ const AllUsers = () => {
                                         </th>
 
                                         <th>
-                                            <button disabled={user?.role === "user" ||user.role === "admin" ? false : true} onClick={() => handleVolunteer(user)} className="btn btn-xs bg-orange-400 text-white hover:bg-orange-300 border-none">Volunteer</button>
+                                            <button disabled={user?.role === "donor" ||user.role === "admin" ? false : true} onClick={() => handleVolunteer(user)} className="btn btn-xs bg-orange-400 text-white hover:bg-orange-300 border-none">Volunteer</button>
                                         </th>
 
                                         
 
                                         <th>
-                                            <button disabled={user?.role === "user" ||user?.role === "volunteer" ? false : true} onClick={() => handleAdmin(user)} className="btn btn-xs bg-cyan-500 text-white hover:bg-cyan-400 border-none">Admin</button>
+                                            <button disabled={user?.role === "donor" ||user?.role === "volunteer" ? false : true} onClick={() => handleAdmin(user)} className="btn btn-xs bg-cyan-500 text-white hover:bg-cyan-400 border-none">Admin</button>
                                         </th>
 
                                     </tr>)
