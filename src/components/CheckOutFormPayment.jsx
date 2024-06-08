@@ -6,6 +6,7 @@ import useAxiosPublic from '../hooks/useAxiosPublic';
 import { AuthContext } from '../provider/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
+import { ImSpinner4 } from 'react-icons/im';
 
 const CheckOutFormPayment = () => {
     const stripe = useStripe();
@@ -15,7 +16,7 @@ const CheckOutFormPayment = () => {
     const [message, setMessage] = useState('');
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
-    const { user } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
 
 

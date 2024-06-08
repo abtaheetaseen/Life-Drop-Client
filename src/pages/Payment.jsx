@@ -48,7 +48,7 @@ const Payment = () => {
     <tbody>
 
         {
-            funds?.map(fund => <tr>
+            funds?.map(fund => <tr key={fund._id}>
                 <td className="text-center">{fund.name.toUpperCase()}</td>
                 <td className="text-center">{fund.email}</td>
                 <td className="text-center">${fund.amount}</td>
