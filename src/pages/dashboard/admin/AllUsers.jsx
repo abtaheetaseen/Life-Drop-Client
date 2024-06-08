@@ -3,6 +3,7 @@ import SectionTitle from '../../../components/SectionTitle'
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AllUsers = () => {
 
@@ -175,6 +176,9 @@ const AllUsers = () => {
 
     return (
         <>
+            <Helmet>
+        <title>LIFE-DROP | ALL USERS</title>
+    </Helmet>
 
             <SectionTitle heading={"All Users"} subHeading={"Manage your users"} />
 

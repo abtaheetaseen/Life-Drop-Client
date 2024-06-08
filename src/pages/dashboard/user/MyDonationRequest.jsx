@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../../../../src/App.css';
+import { Helmet } from 'react-helmet-async';
 
 const MyDonationRequest = () => {
 
@@ -173,6 +174,9 @@ const handleShowAll = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | MY-DONATION-REQUESTS</title>
+    </Helmet>
       <SectionTitle heading={`Welcome ${user?.displayName}`} subHeading={"Your all donation request"} />
 
       <div className='flex items-center justify-center mb-[70px]'>

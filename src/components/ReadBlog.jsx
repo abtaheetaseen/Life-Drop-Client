@@ -1,6 +1,7 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import HTMLToPlainText from './dashboard/HTMLToPlainText';
+import { Helmet } from 'react-helmet-async';
 
 const ReadBlog = () => {
 
@@ -11,6 +12,11 @@ const ReadBlog = () => {
 
 
   return (
+    <>
+        <Helmet>
+        <title>LIFE-DROP | READ BLOG</title>
+    </Helmet>
+    
     <div className='flex items-center justify-center my-[100px]'>
 <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
     <img className="object-cover w-full h-64" src={blog.thumbnail} alt="Article" />
@@ -26,6 +32,7 @@ const ReadBlog = () => {
     </div>
 </div>
 </div>
+</>
   )
 }
 

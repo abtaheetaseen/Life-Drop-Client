@@ -6,6 +6,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const VolunteerAddBlog = () => {
     const axiosSecure = useAxiosSecure();
@@ -59,6 +60,9 @@ const VolunteerAddBlog = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | ADD BLOG</title>
+    </Helmet>
       <SectionTitle heading={"Add Blog"} />
       
       <section className="max-w-4xl p-6 mx-auto bg-white">

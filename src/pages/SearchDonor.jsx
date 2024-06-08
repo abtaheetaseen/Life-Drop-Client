@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../hooks/useAxiosPublic';
 import FilteredDataForSearch from '../components/FilteredDataForSearch';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const SearchDonor = () => {
 
@@ -88,6 +89,10 @@ const handleSearch = (e) => {
 
   return (
     <>
+
+<Helmet>
+        <title>LIFE-DROP | SEARCH DONOR</title>
+    </Helmet>
       <SectionTitle heading={"Search Donors"} />
 
       <section className="bg-white mb-[100px]">

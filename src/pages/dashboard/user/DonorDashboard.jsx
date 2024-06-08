@@ -6,6 +6,7 @@ import SectionTitle from '../../../components/SectionTitle';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const DonorDashboard = () => {
 
@@ -103,6 +104,9 @@ const DonorDashboard = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | DASHBOARD</title>
+    </Helmet>
       <SectionTitle heading={`Welcome ${user?.displayName}`} subHeading={"Your recent donation request"} />
 
       <div className="overflow-x-auto">

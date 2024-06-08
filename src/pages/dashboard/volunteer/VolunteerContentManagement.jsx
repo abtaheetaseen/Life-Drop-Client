@@ -7,6 +7,7 @@ import useVolunteer from '../../../hooks/useVolunteer';
 import SectionTitle from '../../../components/SectionTitle';
 import { Link } from 'react-router-dom';
 import { RiDeleteBin6Fill } from 'react-icons/ri';
+import { Helmet } from 'react-helmet-async';
 
 const VolunteerContentManagement = () => {
 
@@ -54,6 +55,9 @@ setFilteredData(allBlogs);
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | CONTENT-MANAGEMENT</title>
+    </Helmet>
       <SectionTitle heading={"Publish Content"} />
 
       <div className='flex items-center justify-between mb-[50px]'>

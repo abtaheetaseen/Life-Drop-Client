@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import 'react-tabs/style/react-tabs.css';
 import '../../../../src/App.css';
 import "../../../App.css"
+import { Helmet } from 'react-helmet-async';
 
 const AllBloodDonationRequests = () => {
 
@@ -169,6 +170,9 @@ const handleShowAll = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | ALL-DONATION-REQUESTS</title>
+    </Helmet>
       <SectionTitle heading={"Request"} subHeading={"All Blood Donation"} />
 
       <div className='flex items-center justify-center mb-[70px]'>

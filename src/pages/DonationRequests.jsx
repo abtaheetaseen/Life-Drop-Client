@@ -4,6 +4,7 @@ import SectionTitle from '../components/SectionTitle';
 import PendingRequests from '../components/PendingRequests';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const DonationRequests = () => {
 
@@ -21,6 +22,9 @@ const DonationRequests = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | DONATION-REQUESTS</title>
+    </Helmet>
       <SectionTitle heading={"All Donation Requests"} /> 
 
 <div className='flex items-center justify-center mb-[100px]'>

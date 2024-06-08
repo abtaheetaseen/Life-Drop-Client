@@ -5,6 +5,7 @@ import thanks from "../../assets/images/thanks.png"
 import { AuthContext } from '../../provider/AuthProvider';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const ViewDonationRequestDetails = () => {
 
@@ -43,6 +44,9 @@ const ViewDonationRequestDetails = () => {
   return (
     
     <div>
+            <Helmet>
+        <title>LIFE-DROP | DONATION-REQUEST-DETAILS</title>
+    </Helmet>
         <SectionTitle heading={"View Details"} />
 
 <div className='flex items-center justify-center mb-[100px]'>

@@ -9,3 +9,7 @@
 .react-tabs__tab{
     text-align: center;
 }
+
+.active{
+    border-bottom: 2px solid red;
+}

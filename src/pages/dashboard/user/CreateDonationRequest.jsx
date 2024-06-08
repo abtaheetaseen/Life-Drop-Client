@@ -6,6 +6,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const CreateDonationRequest = () => {
 
@@ -114,6 +115,9 @@ const CreateDonationRequest = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | CREATE-DONATION-REQUEST</title>
+    </Helmet>
       <SectionTitle heading={"Request"} subHeading={"Place a donation request"} />
 
       <section className="bg-white min-h-screen mb-[70px]">

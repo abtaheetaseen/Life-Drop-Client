@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { FaUser } from 'react-icons/fa6';
 import { HiDocumentAdd } from 'react-icons/hi';
+import { Helmet } from 'react-helmet-async';
 
 const VolunteerDashboard = () => {
 
@@ -22,6 +23,11 @@ const VolunteerDashboard = () => {
 
   return (
     <>
+
+<Helmet>
+        <title>LIFE-DROP | DASHBOARD</title>
+    </Helmet>
+
       <SectionTitle heading={`Welcome ${user?.displayName}`} subHeading={"All Stats are here"} />
 
 

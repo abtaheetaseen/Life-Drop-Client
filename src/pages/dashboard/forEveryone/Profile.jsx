@@ -6,6 +6,7 @@ import SectionTitle from '../../../components/SectionTitle';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { imageUpload } from '../../../imageAPI';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
 
@@ -118,6 +119,10 @@ const Profile = () => {
 
   return (
     <>
+    <Helmet>
+        <title>LIFE-DROP | PROFILE</title>
+    </Helmet>
+
       <SectionTitle heading={`Your Profile : ${data?.name.toUpperCase()}`} subHeading={"You can edit your info if you want."} />
 
       <div>

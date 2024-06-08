@@ -6,6 +6,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useAxiosPublic from '../../hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateDonationRequest = () => {
 
@@ -120,6 +121,10 @@ const UpdateDonationRequest = () => {
 
   return (
     <>
+
+<Helmet>
+        <title>LIFE-DROP | UPDATE-DONATION-REQUEST</title>
+    </Helmet>
        <SectionTitle heading={"Update Donation Request"} />
 
        <section className="bg-white min-h-screen mb-[70px]">

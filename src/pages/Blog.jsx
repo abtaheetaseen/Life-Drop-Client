@@ -3,6 +3,7 @@ import React from 'react'
 import useAxiosPublic from '../hooks/useAxiosPublic'
 import SectionTitle from '../components/SectionTitle';
 import BlogCard from '../components/BlogCard';
+import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
 
@@ -19,6 +20,9 @@ const Blog = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | BLOGS</title>
+    </Helmet>
       <SectionTitle heading={"Published Blogs"} />
 
 <div className='flex items-center justify-center mb-[70px]'>

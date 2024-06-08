@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import useAxiosSecure from '../../../hooks/useAxiosSecure'
 import { RiDeleteBin6Fill } from 'react-icons/ri'
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet-async'
 
 const ContentManagement = () => {
 
@@ -119,6 +120,9 @@ const ContentManagement = () => {
 
   return (
     <>
+        <Helmet>
+        <title>LIFE-DROP | CONTENT-MANAGEMENT</title>
+    </Helmet>
       <SectionTitle heading={"All Contents"} />
 
       <div className='flex items-center justify-between mb-[50px]'>

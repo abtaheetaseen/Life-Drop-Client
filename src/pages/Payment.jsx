@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import SectionTitle from "../components/SectionTitle";
+import { Helmet } from "react-helmet-async";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PUBLISHABLE_KEY);
 
@@ -22,6 +23,9 @@ const Payment = () => {
 
     return (
         <>
+            <Helmet>
+        <title>LIFE-DROP | GIVE FUND</title>
+    </Helmet>
         <div>
             <Elements stripe={stripePromise}>
             <CheckOutFormPayment />
