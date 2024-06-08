@@ -43,11 +43,11 @@ const Navbar = () => {
             </li>
           </NavLink>
 
-          <NavLink to="/search-donor">
+          {/* <NavLink to="/search-donor">
             <li>
               <div>Search-Donor</div>
             </li>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink to="/blog">
             <li>
