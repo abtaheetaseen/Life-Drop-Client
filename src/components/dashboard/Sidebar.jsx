@@ -245,9 +245,9 @@ const Sidebar = () => {
             <>
             <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center mx-auto'>
               <Link to='/'>
-              <h1 className='text-xl text-red-600 font-bold'>LIFE-DROP</h1>
+              <h1 className='text-xl text-white font-bold'>LIFE-DROP</h1>
               </Link>
             </div>
           </div>

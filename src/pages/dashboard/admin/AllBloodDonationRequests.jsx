@@ -7,6 +7,7 @@ import 'react-tabs/style/react-tabs.css';
 import '../../../../src/App.css';
 import "../../../App.css"
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const AllBloodDonationRequests = () => {
 
