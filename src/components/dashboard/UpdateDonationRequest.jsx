@@ -125,7 +125,7 @@ const UpdateDonationRequest = () => {
 <Helmet>
         <title>LIFE-DROP | UPDATE-DONATION-REQUEST</title>
     </Helmet>
-       <SectionTitle heading={"Update Donation Request"} />
+       <SectionTitle heading={"Update Donation Request"} subHeading={"Kindly provide your Division, District, Upazila and Blood-Group again."} />
 
        <section className="bg-white min-h-screen mb-[70px]">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
