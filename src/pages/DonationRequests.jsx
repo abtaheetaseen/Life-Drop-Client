@@ -2,10 +2,20 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom'
 import SectionTitle from '../components/SectionTitle';
 import PendingRequests from '../components/PendingRequests';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../hooks/useAxiosPublic';
 
 const DonationRequests = () => {
 
-  const donationRequests = useLoaderData();
+  const axiosPublic = useAxiosPublic();
+
+  const {data: donationRequests = []} = useQuery({
+    queryKey: ["donation-requests"],
+    queryFn: async() => {
+      const res = await axiosPublic.get("/donationRequest");
+      return res?.data;
+    }
+  })
   const pendingRequests = donationRequests?.filter(item => item.status === "pending");
   console.log(pendingRequests);
 

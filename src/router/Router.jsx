@@ -49,8 +49,7 @@ export const Router = createBrowserRouter([
             },
             {
                 path: "/donation-requests",
-                element: <DonationRequests />,
-                loader: () => fetch(`http://localhost:3000/donationRequest`)
+                element: <DonationRequests />
             },
             {
                 path: "/blog",
