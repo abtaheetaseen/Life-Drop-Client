@@ -64,21 +64,21 @@ export const Router = createBrowserRouter([
                 element: <PrivateRoute>
                 <UpdateDonationRequest />
                 </PrivateRoute>,
-                loader: () => fetch(`http://localhost:3000/donationRequest`)
+                loader: () => fetch(`https://assignment-12-server-three-virid.vercel.app/donationRequest`)
             },
             {
                 path: "/view-donation-request-details/:id",
                 element: <PrivateRoute>
                 <ViewDonationRequestDetails />
                 </PrivateRoute>,
-                loader: () => fetch(`http://localhost:3000/donationRequest`)
+                loader: () => fetch(`https://assignment-12-server-three-virid.vercel.app/donationRequest`)
             },
             {
                 path: "/blog/:id",
                 element: <PrivateRoute>
                     <ReadBlog />
                 </PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:3000/publishedBlogs/${params.id}`)
+                loader: ({params}) => fetch(`https://assignment-12-server-three-virid.vercel.app/publishedBlogs/${params.id}`)
             },
             {
                 path: "/payment",

@@ -159,7 +159,7 @@ const DonorDashboard = () => {
             </td>
             <td>
               <Link to={`/update-donation-requests/${item._id}`}>
-              <button className='btn btn-xs btn-neutral'>
+              <button disabled={item.status === "done" || item.status === "canceled" ? true : false} className='btn btn-xs btn-neutral'>
                 Edit
               </button>
               </Link>
