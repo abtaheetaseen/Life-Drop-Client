@@ -8,8 +8,9 @@ const Contact = () => {
 
   return (
     <>
+    <div data-aos="fade-right">
       <SectionTitle heading={"CONTACT US"} subHeading={"At : +8801931183851"} />
-
+      </div>
       <section className="w-10/12 px-6 mb-[60px] mx-auto">
 
     <form>

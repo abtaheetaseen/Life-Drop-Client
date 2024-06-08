@@ -38,12 +38,14 @@ const AllBloodDonationRequests = () => {
     }
   })
 
-  useEffect(() => {
-    axiosSecure.get("/totalDonationRequestCount")
-      .then(res => {
-        setTotalDonationRequestCount(res.data);
-      })
-  }, [])
+  const {data: donations = []} = useQuery({
+    queryKey: ["totalDonationsCount"],
+    queryFn: async() => {
+        const res = await axiosSecure.get("/totalDonationRequestCount");
+        setTotalDonationRequestCount(res?.data);
+        return res?.data;
+    }
+})
 
   const handlePrev = () => {
     if (currentPage > 0) {

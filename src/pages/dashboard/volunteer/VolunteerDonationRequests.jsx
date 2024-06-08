@@ -36,12 +36,14 @@ const VolunteerDonationRequests = () => {
     }
   })
 
-  useEffect(() => {
-    axiosSecure.get("/totalDonationRequestCount")
-      .then(res => {
-        setTotalDonationRequestCount(res.data);
-      })
-  }, [])
+  const {data: donationsAll = []} = useQuery({
+    queryKey: ["totalVolunteerDonationRequest"],
+    queryFn: async() => {
+        const res = await axiosSecure.get("/totalDonationRequestCount");
+        setTotalDonationRequestCount(res?.data);
+        return res?.data;
+    }
+})
 
   const handlePrev = () => {
     if (currentPage > 0) {

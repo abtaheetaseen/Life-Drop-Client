@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div className='banner-bg flex items-center justify-center'>
-            <div className='text-center'>
+            <div data-aos="fade-right" className='text-center'>
                 <h1 className='text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-widest'>Donate <span className='text-red-700 italic'>Blood</span></h1>
                 <p className='text-white w-9/12 mx-auto my-5'> Keep Blood Bank shelves full. You may need Blood someday. Blood Donors bring sunshine.</p>
                 <div className='flex items-center justify-center gap-5'>

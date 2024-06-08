@@ -7,7 +7,9 @@ import health from "../assets/images/health.jpg"
 const Features = () => {
     return (
         <>
+            <div data-aos="fade-right">
             <SectionTitle heading={"Features"} subHeading={"Be someone's lifeline"} />
+            </div>
 
             <div className='w-10/12 mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10'>
                 <div className="card bg-base-100 shadow-xl">

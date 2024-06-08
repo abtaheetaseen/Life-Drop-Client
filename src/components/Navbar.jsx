@@ -98,7 +98,7 @@ const Navbar = () => {
 
                   <NavLink to="/payment">
                     <li>
-                      <div>Funding</div>
+                      <div>Give Fund</div>
                     </li>
                   </NavLink>
 

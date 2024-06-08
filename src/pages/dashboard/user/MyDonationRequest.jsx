@@ -40,12 +40,14 @@ const MyDonationRequest = () => {
     }
   })
 
-  useEffect(() => {
-    axiosPublic.get(`/totalDonationRequestCountUser?email=${user?.email}`)
-      .then(res => {
-        setTotalDonationRequestCountUser(res.data);
-      })
-  }, [user?.email])
+  const {data: myDonations = []} = useQuery({
+    queryKey: ["specificUserDonationRequest", user?.email],
+    queryFn: async() => {
+        const res = await axiosPublic.get(`/totalDonationRequestCountUser?email=${user?.email}`);
+        setTotalDonationRequestCountUser(res?.data);
+        return res?.data;
+    }
+})
 
   const handlePrev = () => {
     if (currentPage > 0) {
@@ -58,11 +60,6 @@ const MyDonationRequest = () => {
       setCurrentPage(currentPage + 1);
     }
   }
-
-  const pendingRequest = donationRequests?.filter(item => item.status === "pending");
-  const inProgressRequest = donationRequests?.filter(item => item.status === "inProgress");
-  const doneRequest = donationRequests?.filter(item => item.status === "done");
-  const canceledRequest = donationRequests?.filter(item => item.status === "canceled");
 
 
   const handleDelete = (item) => {
