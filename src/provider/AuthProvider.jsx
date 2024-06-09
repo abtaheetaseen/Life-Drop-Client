@@ -68,7 +68,7 @@ const AuthProvider = ({children}) => {
         }
     }, [axiosPublic])
 
-    const authInfo = {createUser, logOut, signInUser, loading, user, name, setName, setPhotoURL, photoURL, updateUserProfile}
+    const authInfo = {createUser, logOut, signInUser, user, name, setName, setPhotoURL, photoURL, updateUserProfile, loading, setLoading}
 
   return (
     <AuthContext.Provider value={authInfo}>

@@ -15,7 +15,7 @@ const Register = () => {
     const [selectUpazila, setSelectUpazila] = useState("");
     const [selectBloodGroup, setSelectBloodGroup] = useState("");
 
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUserProfile, loading, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state || "/";
@@ -76,6 +76,8 @@ const Register = () => {
         const bloodGroup = selectBloodGroup;
 
         try {
+
+            setLoading(true);
 
             // pass validation
             if (!/[A-Z]/.test(password)) {
@@ -254,7 +256,7 @@ const Register = () => {
                         </div>
 
                         <div className="mt-6">
-                            <input className="cursor-pointer w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-lg hover:bg-red-500" type="submit" value="Register" />
+                            <input disabled={loading} className="cursor-pointer w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-600 rounded-lg hover:bg-red-500" type="submit" value={loading ? "Creating....." : "Register"} />
 
                             <div className="mt-6 text-center ">
                                 <Link to="/login" className="text-sm text-red-600 hover:underline dark:text-red-600">
