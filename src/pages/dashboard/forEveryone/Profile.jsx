@@ -123,7 +123,7 @@ const Profile = () => {
         <title>LIFE-DROP | PROFILE</title>
     </Helmet>
 
-      <SectionTitle heading={`Your Profile : ${data?.name.toUpperCase()}`} subHeading={"You can edit your info if you want."} />
+      <SectionTitle heading={`Your Profile : ${data?.name.toUpperCase()}`} subHeading={"To update your information, kindly provide your Image, Division, District, Upazila and Blood-Group again."} />
 
       <div>
       <form onSubmit={handleUpdate}>
