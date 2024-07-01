@@ -1,12 +1,5 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 1. The name of my website is LIFE-DROP
 2. GitHub Link(client-side) : https://github.com/programming-hero-web-course1/b9a12-client-side-abtaheetaseen
 3. GitHub Link(server-side) : https://github.com/programming-hero-web-course1/b9a12-server-side-abtaheetaseen
@@ -17,11 +10,11 @@ Currently, two official plugins are available:
 
 JavaScript and React are mainly used for client-side development, and for server-side scripting, Node.js and MongoDB are used. Donors can find blood donation requests in their local region and get in touch with the recipients.
 
-If you want to run this project locally you need to ensure some steps:
+To run locally:
 1. Click the green "Code" button and copy the URL.
 2. Open a terminal and navigate to the directory where you want to clone the repository.
 3. Run this command: git clone <repo url>
-4. To install dependencies write npm install in terminal and press enter.
+4. To install dependencies use npm install command.
 5. To run the project use npm start command.
 
 Features:
