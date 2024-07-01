@@ -1,6 +1,6 @@
 # React + Vite
 
-1. The name of my website is LIFE-DROP
+1. Website Name - LIFE-DROP
 2. GitHub Link(client-side) : https://github.com/programming-hero-web-course1/b9a12-client-side-abtaheetaseen
 3. GitHub Link(server-side) : https://github.com/programming-hero-web-course1/b9a12-server-side-abtaheetaseen
 4. Live Link(client-side) : https://life-drop-6707c.web.app/
